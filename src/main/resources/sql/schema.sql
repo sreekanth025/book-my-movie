@@ -18,7 +18,7 @@ CREATE TABLE Movie(
 
 	movie_id varchar(100) PRIMARY KEY ,
 	title varchar(50) ,
-	rating decimal(4,2) check( rating > 0.00 AND rating <= 10.00 ) ,
+	rating decimal(3,1) check( rating > 0.0 AND rating <= 10.0 ) ,
 	certification varchar(5) ,
 	duration INTERVAL DAY TO SECOND ,
 	release_date date ,
