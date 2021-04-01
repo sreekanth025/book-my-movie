@@ -27,7 +27,7 @@ CREATE TABLE Movie(
 
 );
 
-/* insert into movie(duration) value(INTERVAL '02:15' HOUR TO MINUTE) */
+/* insert into movie(duration) value (INTERVAL '02:15' HOUR TO MINUTE) */
 
 
 CREATE TABLE Theatre(
