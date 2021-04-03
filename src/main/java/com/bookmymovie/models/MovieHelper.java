@@ -1,9 +1,8 @@
 package com.bookmymovie.models;
 
 import java.sql.Date;
-import java.util.Arrays;
 
-public class Movie {
+public class MovieHelper {
 	
 	private String movie_id;
 	private String title;
@@ -14,18 +13,14 @@ public class Movie {
 	private String about;
 	private String poster_link;
 	
-	private String[] languages;
-	private String[] genres;
-	private Crew[] crew;
 	
-	
-	public Movie() {
+	public MovieHelper() {
 
 	}
 	
 	
-	public Movie(String movie_id, String title, Double rating, String certification, Integer duration,
-			Date release_date, String about, String poster_link, String[] languages, String[] genres, Crew[] crew) {
+	public MovieHelper(String movie_id, String title, Double rating, String certification, Integer duration,
+			Date release_date, String about, String poster_link) {
 		this.movie_id = movie_id;
 		this.title = title;
 		this.rating = rating;
@@ -34,9 +29,6 @@ public class Movie {
 		this.release_date = release_date;
 		this.about = about;
 		this.poster_link = poster_link;
-		this.languages = languages;
-		this.genres = genres;
-		this.crew = crew;
 	}
 	
 	
@@ -88,34 +80,13 @@ public class Movie {
 	public void setPoster_link(String poster_link) {
 		this.poster_link = poster_link;
 	}
-	public String[] getLanguages() {
-		return languages;
-	}
-	public void setLanguages(String[] languages) {
-		this.languages = languages;
-	}
-	public String[] getGenres() {
-		return genres;
-	}
-	public void setGenres(String[] genres) {
-		this.genres = genres;
-	}
-	public Crew[] getCrew() {
-		return crew;
-	}
-	public void setCrew(Crew[] crew) {
-		this.crew = crew;
-	}
-
-
+	
+	
 	@Override
 	public String toString() {
-		return "Movie [movie_id=" + movie_id + ", title=" + title + ", rating=" + rating + ", certification="
+		return "MovieHelper [movie_id=" + movie_id + ", title=" + title + ", rating=" + rating + ", certification="
 				+ certification + ", duration=" + duration + ", release_date=" + release_date + ", about=" + about
-				+ ", poster_link=" + poster_link + ", languages=" + Arrays.toString(languages) + ", genres="
-				+ Arrays.toString(genres) + ", crew=" + Arrays.toString(crew) + "]";
+				+ ", poster_link=" + poster_link + "]";
 	}
 
 }
-
-// generate constructors, getters and setters after deciding datatypes

@@ -1,6 +1,6 @@
 package com.bookmymovie.models;
 
-public class Theatre {
+public class TheatreHelper {
 
 	private String theatre_id;
 	private String screen_id;
@@ -10,11 +10,11 @@ public class Theatre {
 	private Integer price;
 	
 	
-	public Theatre() {
+	public TheatreHelper() {
 
 	}
 	
-	public Theatre(String theatre_id, String screen_id, String name, String street, String city, Integer price) {
+	public TheatreHelper(String theatre_id, String screen_id, String name, String street, String city, Integer price) {
 		this.theatre_id = theatre_id;
 		this.screen_id = screen_id;
 		this.name = name;

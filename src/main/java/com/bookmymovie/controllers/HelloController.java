@@ -19,10 +19,12 @@ public class HelloController {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	
 	@RequestMapping("/hello")
 	public String sayHello() {
 		return "Hello team!";
 	}
+	
 	
 	@RequestMapping("oracleTest")
 	public List<String> testOracle() {
