@@ -22,7 +22,7 @@ CREATE TABLE Movie(
 	duration int ,
 	release_date date ,
 	about long varchar ,
-	poster_link varchar UNIQUE
+	poster_link varchar(100) UNIQUE
 
 );
 
@@ -106,7 +106,7 @@ CREATE TABLE Crew(
     	movie_id varchar(100) ,
     	role varchar(100) ,
     	name varchar(100) ,
-    	image_link varchar UNIQUE ,
+    	image_link varchar(100) UNIQUE ,
     
     	CONSTRAINT fk_crew_movieid FOREIGN KEY (movie_id)
     	REFERENCES Movie(movie_id) ON DELETE CASCADE
