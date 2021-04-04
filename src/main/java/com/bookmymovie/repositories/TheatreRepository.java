@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.bookmymovie.models.TheatreHelper;
+import com.bookmymovie.models.Ticket;
 
 @Repository
 public class TheatreRepository {
@@ -80,5 +81,50 @@ public class TheatreRepository {
 		});
 		
 		return seats;
+	}
+	
+	public Integer getTicketid() {
+		
+		String ticketid_query = "SELECT TICKET_SEQUENCE.NEXTVAL FROM dual";
+		
+		List<Integer> t_id = jdbcTemplate.query(ticketid_query, new RowMapper<Integer>() {
+			public Integer mapRow(ResultSet rs, int rowNumber) throws SQLException {
+				return rs.getInt(1);
+			}
+		});
+		
+		return t_id.get(0);
+	}
+	
+	public void bookSeats(String theatre_id, String screen_id, String show_date, String show_time, List<String> seats, String ticket_id) {
+		
+		
+		for(String seat: seats) {
+			
+			String sql = "INSERT INTO seat VALUES ('" + theatre_id + "', '"
+					+ screen_id + "','" + seat + "' , TO_TIMESTAMP('" + 
+				    show_time + "', 'YYYY-MM-DD:HH24:MI:SS'), DATE '"+ show_date + "', '"+ ticket_id + "')";
+			
+			System.out.println(sql);
+			int n = jdbcTemplate.update(sql);			
+			System.out.println(n);
+		}
+		
+	}
+	
+	public void insertTicket(String email,String ticket_id) {
+		
+		String sql = "INSERT INTO ticket VALUES ('" + ticket_id + "','" + email + "', SYSTIMESTAMP )";
+		int n = jdbcTemplate.update(sql);
+		
+		System.out.println(n);
+	}
+	
+	public Ticket getTicket(String ticket_id) {
+		
+		 String sql = "SELECT * FROM ticket where ticket_id = '" + ticket_id + "'";
+		 
+		 List<Ticket> tickets = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Ticket.class));
+		 return tickets.get(0);
 	}
 }
