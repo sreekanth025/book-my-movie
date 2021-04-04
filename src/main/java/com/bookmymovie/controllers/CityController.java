@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.models.MovieSmall;
-import com.bookmymovie.models.TheatreHelper;
+import com.bookmymovie.models.Theatre;
 import com.bookmymovie.services.CityService;
 
 @RestController
@@ -38,7 +38,7 @@ public class CityController {
 	
 	// Get all theaters in a city for a given movie
 	@RequestMapping("/api/cities/{city}/movies/{movie_id}")
-	public List<TheatreHelper> getAllTheatres(@PathVariable String city, 
+	public List<Theatre> getAllTheatres(@PathVariable String city, 
 				@PathVariable String movie_id, @RequestBody Map<String, String> payload){
 		
 		String show_date = payload.get("show_date");

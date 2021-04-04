@@ -40,7 +40,7 @@ public class MovieRepository {
 	// Get all languages available for a movie
 	public List<String> getLangugaes(String movie_id) {
 		
-		String query_string = "SELECT language FROM languages WHERE movie_id = " + movie_id;
+		String query_string = "SELECT language FROM languages WHERE movie_id = '" + movie_id + "'";
 		
 		List<String> languages = jdbcTemplate.query(query_string, new RowMapper<String>() {
 			public String mapRow(ResultSet rs, int rowNumber) throws SQLException {
@@ -56,7 +56,7 @@ public class MovieRepository {
 	// Get all genres of a movie
 	public List<String> getGenres(String movie_id) {
 			
-		String query_string = "SELECT genre FROM genres WHERE movie_id = " + movie_id;
+		String query_string = "SELECT genre FROM genre WHERE movie_id = '" + movie_id + "'";
 		
 		List<String> genres = jdbcTemplate.query(query_string, new RowMapper<String>() {
 			public String mapRow(ResultSet rs, int rowNumber) throws SQLException {
@@ -74,7 +74,7 @@ public class MovieRepository {
 		
 		String query_string = "SELECT DISTINCT  movie_id, title, rating, poster_link "
 							+ "FROM movie NATURAL JOIN theatre NATURAL JOIN runs_on "
-							+ "WHERE city = " + city;
+							+ "WHERE city = '" + city + "'";
 		
 		List<MovieSmallHelper> movies = jdbcTemplate.query(query_string, 
 				BeanPropertyRowMapper.newInstance(MovieSmallHelper.class));
@@ -87,7 +87,7 @@ public class MovieRepository {
 	//	Get details of crew members in a movie
 	public List<Crew> getCrew(String movie_id) {
 		
-		String query_string = "SELECT * FROM crew WHERE movie_id = " + movie_id;
+		String query_string = "SELECT * FROM crew WHERE movie_id = '" + movie_id + "'";
 		
 		List<Crew> crew = jdbcTemplate.query(query_string, 
 				BeanPropertyRowMapper.newInstance(Crew.class));
@@ -100,7 +100,7 @@ public class MovieRepository {
 	// Get details of a movie
 	public MovieHelper getMovie(String movie_id) {
 		
-		String query_string = "SELECT * FROM movie WHERE movie_id = " + movie_id;
+		String query_string = "SELECT * FROM movie WHERE movie_id = '" + movie_id + "'";
 		
 		// List should contain only one element
 		List<MovieHelper> movie_helper_list = jdbcTemplate.query(query_string, 
