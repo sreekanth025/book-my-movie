@@ -36,16 +36,17 @@ public class TheatreController {
 		String screen_id  = (String) payload.get("screen_id");
 		String show_date  = (String) payload.get("show_date");
 		String show_time  = (String) payload.get("show_time");
+		
 		@SuppressWarnings("unchecked")
 		List<String> seats= (List<String>) payload.get("seats");
 		String email      = (String) payload.get("email");
 		
-		System.out.println(theatre_id);
-		System.out.println(screen_id);
-		System.out.println(show_date);
-		System.out.println(show_time);
-		System.out.println(seats);
-		System.out.println(email);
+//		System.out.println(theatre_id);
+//		System.out.println(screen_id);
+//		System.out.println(show_date);
+//		System.out.println(show_time);
+//		System.out.println(seats);
+//		System.out.println(email);
 		
 		return theatreService.bookTicket(theatre_id, screen_id, show_date, show_time, seats, email);
 	}

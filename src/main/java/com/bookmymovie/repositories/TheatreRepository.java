@@ -72,7 +72,10 @@ public class TheatreRepository {
 	
 	public List<String> getBookedSeats(String theatre_id, String screen_id, String show_date, String show_time) {
 		
-		String query_string = "";
+		String query_string = "SELECT seat_id FROM seat WHERE theatre_id = '" + theatre_id + "' "
+							+ "AND screen_id = '" + screen_id + "' "
+							+ "AND show_date = TO_DATE('" + show_date + "', 'YYYY-MM-DD') "
+							+ "AND show_time = TO_TIMESTAMP('" + show_time + "', 'YYYY-MM-DD:HH24:MI:SS')";
 		
 		List<String> seats = jdbcTemplate.query(query_string, new RowMapper<String>() {
 			public String mapRow(ResultSet rs, int rowNumber) throws SQLException {
@@ -105,9 +108,9 @@ public class TheatreRepository {
 					+ screen_id + "','" + seat + "' , TO_TIMESTAMP('" + 
 				    show_time + "', 'YYYY-MM-DD:HH24:MI:SS'), DATE '"+ show_date + "', '"+ ticket_id + "')";
 			
-			System.out.println(sql);
+//			System.out.println(sql);
 			int n = jdbcTemplate.update(sql);			
-			System.out.println(n);
+//			System.out.println(n);
 		}
 		
 	}
@@ -117,7 +120,7 @@ public class TheatreRepository {
 		String sql = "INSERT INTO ticket VALUES ('" + ticket_id + "','" + email + "', SYSTIMESTAMP )";
 		int n = jdbcTemplate.update(sql);
 		
-		System.out.println(n);
+//		System.out.println(n);
 	}
 	
 	public Ticket getTicket(String ticket_id) {
