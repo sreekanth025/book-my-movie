@@ -4,7 +4,6 @@ SET SERVEROUTPUT ON
 
 --bookMyShow database
 
-DROP TABLE Time_slots;
 DROP TABLE Crew;
 DROP TABLE Genre;
 DROP TABLE Languages;
@@ -20,14 +19,13 @@ CREATE TABLE Movie(
 	title varchar(50) ,
 	rating decimal(3,1) check( rating > 0.0 AND rating <= 10.0 ) ,
 	certification varchar(5) ,
-	duration INTERVAL DAY TO SECOND ,
+	duration int ,
 	release_date date ,
 	about long varchar ,
-	poster_id INT UNIQUE
+	poster_link varchar(100) UNIQUE
+
 
 );
-
-/* insert into movie(duration) value (INTERVAL '02:15' HOUR TO MINUTE) */
 
 
 CREATE TABLE Theatre(
@@ -58,7 +56,6 @@ CREATE TABLE Seat(
 	seat_id varchar(100) ,
 	show_time timestamp ,
 	show_date date ,		
-	status varchar(2) check( status in ('NA','A') ) ,
 	ticket_id varchar(100) ,
 
 	CONSTRAINT fk_seat_owner FOREIGN KEY(ticket_id) 
@@ -74,19 +71,21 @@ CREATE TABLE Runs_on(
 	movie_id varchar(100) ,
     	theatre_id varchar(100) ,
     	screen_id varchar(100) ,
-    
+    	language varchar(100) ,
+	show_time timestamp ,
+
     	CONSTRAINT fk_runs_movieid FOREIGN KEY (movie_id)
     	REFERENCES Movie(movie_id) ON DELETE CASCADE ,
     
     	CONSTRAINT fk_runs_theatre FOREIGN KEY (theatre_id,screen_id)
     	REFERENCES Theatre(theatre_id,screen_id) ON DELETE CASCADE
 );
-
+ROLLBACK;
 
 CREATE TABLE Languages(
 
     	movie_id varchar(100) ,
-    	lang varchar(100) ,
+    	language varchar(100) ,
     
     	CONSTRAINT fk_lang_movieid FOREIGN KEY (movie_id)
    	REFERENCES Movie(movie_id) ON DELETE CASCADE
@@ -108,21 +107,13 @@ CREATE TABLE Crew(
     	movie_id varchar(100) ,
     	role varchar(100) ,
     	name varchar(100) ,
-    	image_id INT UNIQUE ,
+    	image_link varchar(100) UNIQUE ,
+
     
     	CONSTRAINT fk_crew_movieid FOREIGN KEY (movie_id)
     	REFERENCES Movie(movie_id) ON DELETE CASCADE
 );
 
 
-CREATE TABLE Time_slots(
-
-    	theatre_id varchar(100) ,
-    	screen_id varchar(100) ,
-    	show_time timestamp ,
-    
-    	CONSTRAINT fk_slots FOREIGN KEY (theatre_id,screen_id)
-    	REFERENCES Theatre(theatre_id,screen_id) ON DELETE CASCADE
-);
 	
 	
