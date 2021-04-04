@@ -4,7 +4,6 @@ SET SERVEROUTPUT ON
 
 --bookMyShow database
 
-DROP TABLE Time_slots;
 DROP TABLE Crew;
 DROP TABLE Genre;
 DROP TABLE Languages;
