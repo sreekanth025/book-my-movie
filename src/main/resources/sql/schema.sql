@@ -23,7 +23,7 @@ CREATE TABLE Movie(
 	duration int ,
 	release_date date ,
 	about long varchar ,
-	poster_link varchar UNIQUE
+	poster_link  varchar(1000) UNIQUE
 
 );
 
@@ -80,7 +80,7 @@ CREATE TABLE Runs_on(
     	CONSTRAINT fk_runs_theatre FOREIGN KEY (theatre_id,screen_id)
     	REFERENCES Theatre(theatre_id,screen_id) ON DELETE CASCADE
 );
-
+ROLLBACK;
 
 CREATE TABLE Languages(
 
@@ -107,7 +107,7 @@ CREATE TABLE Crew(
     	movie_id varchar(100) ,
     	role varchar(100) ,
     	name varchar(100) ,
-    	image_link varchar UNIQUE ,
+    	image_link varchar(1000) UNIQUE ,
     
     	CONSTRAINT fk_crew_movieid FOREIGN KEY (movie_id)
     	REFERENCES Movie(movie_id) ON DELETE CASCADE
