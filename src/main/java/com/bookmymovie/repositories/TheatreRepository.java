@@ -68,4 +68,17 @@ public class TheatreRepository {
 		return show_times;
 	
 	}
+	
+	public List<String> getBookedSeats(String theatre_id, String screen_id, String show_date, String show_time) {
+		
+		String query_string = "";
+		
+		List<String> seats = jdbcTemplate.query(query_string, new RowMapper<String>() {
+			public String mapRow(ResultSet rs, int rowNumber) throws SQLException {
+				return rs.getString(1);
+			}
+		});
+		
+		return seats;
+	}
 }
