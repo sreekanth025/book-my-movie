@@ -107,14 +107,14 @@ CREATE TABLE Crew(
     	movie_id varchar(100) ,
     	role varchar(100) ,
     	name varchar(100) ,
-    	image_link varchar(100) UNIQUE ,
+    	image_link varchar(100),
 
     
     	CONSTRAINT fk_crew_movieid FOREIGN KEY (movie_id)
     	REFERENCES Movie(movie_id) ON DELETE CASCADE
 );
 
-
+DROP SEQUENCE ticket_sequence;
 CREATE SEQUENCE ticket_sequence
 MINVALUE 1
 START WITH 1
