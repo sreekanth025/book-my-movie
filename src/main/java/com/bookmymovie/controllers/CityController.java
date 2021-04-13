@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.models.MovieSmall;
@@ -37,7 +38,7 @@ public class CityController {
 	
 	
 	// Get all theaters in a city for a given movie
-	@RequestMapping("/api/cities/{city}/movies/{movie_id}")
+	@RequestMapping(method=RequestMethod.POST, value="/api/cities/{city}/movies/{movie_id}")
 	public List<Theatre> getAllTheatres(@PathVariable String city, 
 				@PathVariable String movie_id, @RequestBody Map<String, String> payload){
 		
