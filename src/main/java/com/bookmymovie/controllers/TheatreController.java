@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmymovie.models.Ticket;
@@ -21,7 +22,7 @@ public class TheatreController {
 
 	@RequestMapping("/api/theatres/{theatre_id}/{screen_id}/")
 	public List<String> getBookedSeats(@PathVariable String theatre_id, @PathVariable String screen_id, 
-			@RequestBody Map<String, String> payload) {
+			@RequestParam Map<String, String> payload) {
 		
 		String show_date = payload.get("show_date");
 		String show_time = payload.get("show_time");
