@@ -44,7 +44,7 @@ CREATE TABLE Theatre(
 CREATE TABLE Ticket(
 	
 	ticket_id varchar(100) PRIMARY KEY ,
-	email varchar(25) ,
+	email varchar(100) ,
 	booking_time timestamp 
 );
 
