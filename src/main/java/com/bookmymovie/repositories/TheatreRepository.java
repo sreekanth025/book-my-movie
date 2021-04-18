@@ -130,4 +130,34 @@ public class TheatreRepository {
 		 List<Ticket> tickets = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Ticket.class));
 		 return tickets.get(0);
 	}
+
+
+
+	public String getMovieName(String theatre_id, String screen_id, String show_time) {
+		// TODO Auto-generated method stub
+		
+		String sql = "select title from runs_on NATURAL JOIN movie "
+				+ "where theatre_id = '" + theatre_id + "' AND "
+				+ "screen_id = '" + screen_id + "' AND "
+				+ "show_time = TO_TIMESTAMP('" + show_time + "', 'YYYY-MM-DD:HH24:MI:SS')";
+		
+		// List should contain only one element
+		List<String> movieTitle = jdbcTemplate.query(sql, new RowMapper<String>() {
+				public String mapRow(ResultSet rs, int rowNumber) throws SQLException {
+					return rs.getString(1);
+				}
+		});
+		
+		
+		return movieTitle.get(0);
+	}
+	
+	public TheatreHelper getTheatreDetails(String theatre_id) {
+		
+		String sql = "select * from theatre WHERE theatre_id = '" + theatre_id + "'";
+		
+		List<TheatreHelper> TheatreDetails = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(TheatreHelper.class));
+		
+		return TheatreDetails.get(0);
+	}
 }

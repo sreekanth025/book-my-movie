@@ -14,6 +14,9 @@ public class TheatreService {
 	@Autowired
 	private TheatreRepository theatreRepository;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	public List<String> getBookedSeats(String theatre_id, String screen_id, String show_date, String show_time) {
 		return theatreRepository.getBookedSeats(theatre_id, screen_id, show_date, show_time);
 	}
@@ -29,6 +32,8 @@ public class TheatreService {
 		
 		theatreRepository.insertTicket(email, t_id);
 		theatreRepository.bookSeats(theatre_id, screen_id, show_date, show_time, seats, t_id);
+		
+		emailService.sendEmail(theatre_id, screen_id, show_date, show_time, seats, email, t_id);
 		
 		return theatreRepository.getTicket(t_id);
 		

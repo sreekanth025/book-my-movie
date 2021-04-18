@@ -6,6 +6,7 @@ target/
 
 ### database-configuration ###
 /src/main/resources/db.properties
+/src/main/resources/config.properties
 
 
 ### STS ###
