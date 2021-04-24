@@ -1,7 +1,9 @@
 package com.bookmymovie.repositories;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -111,6 +113,25 @@ public class TheatreRepository {
 //			System.out.println(sql);
 			int n = jdbcTemplate.update(sql);			
 //			System.out.println(n);
+		}
+		
+	}
+	
+	public void BookSeatsWithConnection(Connection conn, 
+									String theatre_id, 
+									String screen_id, 
+									String show_date, 
+									String show_time, 
+									List<String> seats, 
+									String ticket_id) throws SQLException {
+		
+		for(String seat: seats) {
+			String sql = "INSERT INTO seat VALUES ('" + theatre_id + "', '"
+					+ screen_id + "','" + seat + "' , TO_TIMESTAMP('" + 
+				    show_time + "', 'YYYY-MM-DD:HH24:MI:SS'), DATE '"+ show_date + "', '"+ ticket_id + "')";
+			
+			Statement stmt = conn.createStatement();
+			stmt.execute(sql);
 		}
 		
 	}

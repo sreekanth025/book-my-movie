@@ -1,5 +1,6 @@
 package com.bookmymovie.controllers;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +32,7 @@ public class TheatreController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST,value="/api/booking")
-	public Ticket bookTicket(@RequestBody Map<String,Object> payload) {
+	public Ticket bookTicket(@RequestBody Map<String,Object> payload) throws SQLException {
 		
 		String theatre_id = (String) payload.get("theatre_id");
 		String screen_id  = (String) payload.get("screen_id");
