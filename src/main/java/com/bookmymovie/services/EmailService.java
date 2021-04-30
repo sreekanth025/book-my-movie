@@ -52,6 +52,7 @@ public class EmailService {
 		
 		message.setFrom("BookMyMovie");
         message.setTo(email);
+        message.setCc("bookmymovie95@gmail.com");
         message.setText(body);
         message.setSubject("Book My Movie: Tickets Booked");
         
