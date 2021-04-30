@@ -24,7 +24,7 @@ public class TheatreRepository {
 	// Get list of all cities
 	public List<String> getAllCities() {
 		
-		String query_string = "SELECT DISTINCT city FROM theatre";
+		String query_string = "SELECT DISTINCT city FROM theatre ORDER BY city";
 		
 		List<String> cities = jdbcTemplate.query(query_string, new RowMapper<String>() {
 			public String mapRow(ResultSet rs, int rowNumber) throws SQLException {

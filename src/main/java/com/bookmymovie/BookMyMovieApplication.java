@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySources;
     @PropertySource("classpath:application.properties"),
     @PropertySource("classpath:config.properties")
 })
-//Include the db.properties file containing login information
+//Include the config.properties file containing login information
 public class BookMyMovieApplication {
 
 	public static void main(String[] args) {
